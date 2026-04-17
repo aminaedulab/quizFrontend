@@ -8,7 +8,7 @@ export default function LessonListPage() {
   const [lessons, setLessons] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:7000/v1/lesson")
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/lesson`)
       .then(res => res.json())
       .then(data => setLessons(data.data));
   }, []);
