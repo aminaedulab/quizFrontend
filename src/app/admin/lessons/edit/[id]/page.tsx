@@ -24,7 +24,7 @@ export default function EditLessonPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://localhost:7000/v1/lesson/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/lesson/${id}`)
       .then(res => res.json())
       .then(data => {
         const lesson = data.data;
@@ -45,7 +45,7 @@ const regenerateSummary = async () => {
     console.log('idddddddddd',id)
 
   const res = await fetch(
-    "http://localhost:7000/v1/admin/regenerate-summary",
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/admin/regenerate-summary`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -68,7 +68,7 @@ const regenerateSummary = async () => {
 
   // 🔹 Update lesson
   const update = async () => {
-    await fetch(`http://localhost:7000/v1/admin/lesson/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/admin/lesson/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

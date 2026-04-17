@@ -16,7 +16,7 @@ export default function RegisterPage() {
   const submit = async () => {
     setError("");
 
-    const res = await fetch("http://localhost:7000/v1/auth/register", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
